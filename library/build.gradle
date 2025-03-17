@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
-version = "1.0.0"
+version = "1.0.5"
+def sdkFlavorDimensions = "jsbridge"
 
 android {
     compileSdkVersion 21
@@ -18,14 +19,32 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions { // 消除lint警告
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    libraryVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            outputFileName = "${sdkFlavorDimensions}" +
+                    "-${version}" +
+                    "-${currTime()}-${buildType.name}.aar"
+        }
+    }
+}
+
+static def currTime() {
+    return new Date().format("yyyyMMdd")
 }
 
 dependencies {
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 def siteUrl = 'https://github.com/lzyzsd/JsBridge'
 def gitUrl = 'https://github.com/lzyzsd/JsBridge.git'
-group = "com.github.lzyzsd.jsbridge"
+// apply plugin: 'com.github.dcendents.android-maven'
+/*group = "com.github.lzyzsd.jsbridge"
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -41,6 +60,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
+}*/
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
