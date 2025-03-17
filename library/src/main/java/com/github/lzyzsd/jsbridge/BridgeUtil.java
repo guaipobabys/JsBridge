@@ -23,7 +23,7 @@ public class BridgeUtil {
 //	public final static String JAVASCRIPT_STR = "javascript:";
 
 
-	public static final String JAVA_SCRIPT = "WebViewJavascriptBridge.js";
+	public static final String JAVA_SCRIPT = "WebViewJavascriptBridge-WeSIS.js";
 	public final static String JAVASCRIPT_STR = "javascript:%s";
 
 	/**
@@ -39,7 +39,7 @@ public class BridgeUtil {
 	}
 
 	/**
-	 * 这里只是加载lib包中assets中的 WebViewJavascriptBridge.js
+	 * 这里只是加载lib包中assets中的 WebViewJavascriptBridge-WeSIS.js
 	 * @param view webview
 	 * @param path 路径
 	 */

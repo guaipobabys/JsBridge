@@ -3,7 +3,6 @@ package com.github.lzyzsd.jsbridge;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
-import androidx.annotation.Nullable;
 
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,7 +24,7 @@ import java.net.URLDecoder;
  * 如果要自定义WebViewClient必须要集成此类
  * Created by bruce on 10/28/15.
  */
-class BridgeWebViewClient extends WebViewClient {
+public class BridgeWebViewClient extends WebViewClient {
 
     private static final String TAG = "BridgeWebViewClient";
     private OnLoadJSListener mListener;
@@ -103,7 +102,6 @@ class BridgeWebViewClient extends WebViewClient {
         }
     }
 
-    @Nullable
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         if (mClient != null) {
@@ -112,7 +110,6 @@ class BridgeWebViewClient extends WebViewClient {
         return super.shouldInterceptRequest(view, url);
     }
 
-    @Nullable
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && mClient != null) {
@@ -231,7 +228,7 @@ class BridgeWebViewClient extends WebViewClient {
     }
 
     @Override
-    public void onReceivedLoginRequest(WebView view, String realm, @Nullable String account, String args) {
+    public void onReceivedLoginRequest(WebView view, String realm, String account, String args) {
         if (mClient != null) {
             mClient.onReceivedLoginRequest(view, realm, account, args);
         } else {

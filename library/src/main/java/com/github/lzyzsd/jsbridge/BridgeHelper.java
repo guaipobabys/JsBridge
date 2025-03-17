@@ -26,7 +26,7 @@ public class BridgeHelper implements WebViewJavascriptBridge {
 
     private static final String TAG = "BridgeHelper";
 
-    private static final String BRIDGE_JS = "WebViewJavascriptBridge.js";
+    private static final String BRIDGE_JS = "WebViewJavascriptBridge-WeSIS.js";
     private Map<String, OnBridgeCallback> responseCallbacks = new HashMap<>();
     private Map<String, BridgeHandler> messageHandlers = new HashMap<>();
     private BridgeHandler defaultHandler = new DefaultHandler();
@@ -299,9 +299,9 @@ public class BridgeHelper implements WebViewJavascriptBridge {
             final Message response = new Message();
             response.responseId = callbackId;
             response.responseData = data instanceof String ? (String) data : new Gson().toJson(data);
-            if (Thread.currentThread() == Looper.getMainLooper().getThread()){
+            if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
                 dispatchMessage(response);
-            }else {
+            } else {
                 webView.getWebView().post(new Runnable() {
                     @Override
                     public void run() {
@@ -314,7 +314,7 @@ public class BridgeHelper implements WebViewJavascriptBridge {
 
     @Override
     public void responseFromWeb(String data, String callbackId) {
-        sendResponse(data,callbackId);
+        sendResponse(data, callbackId);
     }
 
     public Map<String, OnBridgeCallback> getCallbacks() {

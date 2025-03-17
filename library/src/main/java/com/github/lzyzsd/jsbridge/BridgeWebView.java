@@ -5,10 +5,8 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Looper;
 import android.os.SystemClock;
-import androidx.collection.ArrayMap;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.webkit.WebView;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
@@ -18,10 +16,7 @@ import android.webkit.WebViewClient;
 import com.github.lzyzsd.library.BuildConfig;
 import com.google.gson.Gson;
 
-
 import org.json.JSONObject;
-
-import java.net.URLEncoder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +27,7 @@ import java.util.Map;
 public class BridgeWebView extends WebView implements WebViewJavascriptBridge, BridgeWebViewClient.OnLoadJSListener {
 
 	private final int URL_MAX_CHARACTER_NUM=2097152;
-    private Map<String, OnBridgeCallback> mCallbacks = new ArrayMap<>();
+    private Map<String, OnBridgeCallback> mCallbacks = new HashMap<>();
 
     private List<Object> mMessages = new ArrayList<>();
 
