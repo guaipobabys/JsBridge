@@ -1,15 +1,14 @@
 apply plugin: 'com.android.library'
 
-version = "1.0.5"
+version = "1.0.4"
 def sdkFlavorDimensions = "jsbridge"
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdk 34
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdk 34
         versionCode 1
         versionName version
     }
